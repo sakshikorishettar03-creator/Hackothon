@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap');
+
+:root {
+  /* Futuristic Dark Smart City Palette (Default) */
+  --bg-main: #050D1A;
+  --bg-sidebar: #071426;
+  --bg-card: #0B1930;
+  --bg-card-hover: #0E2242;
+  --bg-card-glass: rgba(11, 25, 48, 0.78);
+  --border-glass: rgba(0, 229, 229, 0.15);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-focus: #00E5E5;
+
+  /* Accent Colors */
+  --primary-cyan: #00E5E5;
+  --secondary-turquoise: #00B8D9;
+  --purple-accent: #695CFF;
+  --success-green: #00D68F;
+  --warning-orange: #FF9F43;
+  --error-red: #FF4757;
+
+  /* Typography */
+  --text-primary: #FFFFFF;
+  --text-secondary: #A8B8CC;
+  --text-muted: #5E718D;
+  --text-inverse: #050D1A;
+
+  /* Shadows & Glows */
+  --glow-cyan: 0 0 25px rgba(0, 229, 229, 0.35);
+  --glow-cyan-sm: 0 0 12px rgba(0, 229, 229, 0.25);
+  --glow-purple: 0 0 25px rgba(105, 92, 255, 0.35);
+  --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+  /* Fonts */
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Transitions */
+  --transition-fast: 0.18s ease;
+  --transition-normal: 0.28s ease;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --sidebar-width: 270px;
+}
+
+[data-theme='light'] {
+  --bg-main: #F0F4F8;
+  --bg-sidebar: #071426; /* Keep GovTech command sidebar dark for contrast, or light navy */
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F8FAFC;
+  --bg-card-glass: rgba(255, 255, 255, 0.92);
+  --border-glass: rgba(0, 184, 217, 0.22);
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-focus: #00B8D9;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --text-inverse: #FFFFFF;
+  --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom Futuristic Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: #142845;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 229, 229, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-cyan);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+/* Glassmorphism Card Utility */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 229, 229, 0.35);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), 0 0 15px rgba(0, 229, 229, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Neon Cyan Glowing Buttons */
+.btn-neon-cyan {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, var(--primary-cyan) 0%, var(--secondary-turquoise) 100%);
+  color: #040B16;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14.5px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 229, 229, 0.4);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-neon-cyan:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 229, 229, 0.7);
+  background: linear-gradient(135deg, #26ffff 0%, var(--primary-cyan) 100%);
+}
+
+.btn-neon-cyan:active {
+  transform: translateY(0);
+}
+
+/* Secondary Ghost Button */
+.btn-glass-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: rgba(11, 25, 48, 0.6);
+  backdrop-filter: blur(8px);
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 14.5px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 229, 229, 0.35);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-glass-secondary:hover {
+  background: rgba(0, 229, 229, 0.12);
+  border-color: var(--primary-cyan);
+  color: var(--primary-cyan);
+  box-shadow: 0 0 18px rgba(0, 229, 229, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Gradient Text */
+.gradient-text-cyan {
+  background: linear-gradient(135deg, #00E5E5 0%, #00B8D9 50%, #695CFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glow Badges */
+.badge-neon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: rgba(0, 229, 229, 0.1);
+  border: 1px solid rgba(0, 229, 229, 0.3);
+  color: var(--primary-cyan);
+}
+
+.badge-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--primary-cyan);
+  box-shadow: 0 0 10px var(--primary-cyan);
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+    box-shadow: 0 0 14px var(--primary-cyan);
+  }
+}
+
+/* App Layout Grid */
+.civicflow-layout {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--bg-main);
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(0, 229, 229, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 85% 65%, rgba(105, 92, 255, 0.05) 0%, transparent 45%);
+}
+
+.civicflow-content-wrapper {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left var(--transition-normal);
+}
+
+.civicflow-main-content {
+  flex: 1;
+  padding: 24px 32px 48px;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1180px) {
+  .civicflow-main-content {
+    padding: 20px 22px 40px;
+  }
+}
+
+@media (max-width: 960px) {
+  :root {
+    --sidebar-width: 0px;
+  }
+  .civicflow-content-wrapper {
+    margin-left: 0;
+  }
+  .civicflow-main-content {
+    padding: 16px 14px 36px;
+  }
+}
